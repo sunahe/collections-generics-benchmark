@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>GenericsBaby-20230830-221041</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.7, Windows 11 (10.0.22621.2134/22H2/2022Update/SunValley2)
+13th Gen Intel Core i7-13700KF, 1 CPU, 24 logical and 16 physical cores
+.NET SDK 7.0.400
+  [Host]             : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+  .NET 7.0           : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+  .NET Framework 4.8 : .NET Framework 4.8.1 (4.8.9167.0), X64 RyuJIT VectorSize=256
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>               Method</th><th>         Job</th><th>     Runtime</th><th>ListSize</th><th>   Mean</th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>ForeachInList</td><td>.NET 7.0</td><td>.NET 7.0</td><td>10</td><td>5.445 ns</td><td>0.0352 ns</td><td>0.0330 ns</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachInEnumerable</td><td>.NET 7.0</td><td>.NET 7.0</td><td>10</td><td>66.938 ns</td><td>0.1589 ns</td><td>0.1409 ns</td><td>0.0025</td><td>40 B</td>
+</tr><tr><td>ForeachInGenericIEnumerable</td><td>.NET 7.0</td><td>.NET 7.0</td><td>10</td><td>68.550 ns</td><td>0.7081 ns</td><td>0.6624 ns</td><td>0.0025</td><td>40 B</td>
+</tr><tr><td>ForeachInGenericIList</td><td>.NET 7.0</td><td>.NET 7.0</td><td>10</td><td>68.080 ns</td><td>0.5825 ns</td><td>0.5449 ns</td><td>0.0025</td><td>40 B</td>
+</tr><tr><td>ForeachInList</td><td>.NET Framework 4.8</td><td>.NET Framework 4.8</td><td>10</td><td>23.759 ns</td><td>0.0753 ns</td><td>0.0704 ns</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachInEnumerable</td><td>.NET Framework 4.8</td><td>.NET Framework 4.8</td><td>10</td><td>60.055 ns</td><td>0.3314 ns</td><td>0.2938 ns</td><td>0.0063</td><td>40 B</td>
+</tr><tr><td>ForeachInGenericIEnumerable</td><td>.NET Framework 4.8</td><td>.NET Framework 4.8</td><td>10</td><td>63.547 ns</td><td>0.5429 ns</td><td>0.5078 ns</td><td>0.0063</td><td>40 B</td>
+</tr><tr><td>ForeachInGenericIList</td><td>.NET Framework 4.8</td><td>.NET Framework 4.8</td><td>10</td><td>62.952 ns</td><td>0.2396 ns</td><td>0.2124 ns</td><td>0.0063</td><td>40 B</td>
+</tr><tr><td>ForeachInList</td><td>.NET 7.0</td><td>.NET 7.0</td><td>100</td><td>37.004 ns</td><td>0.0992 ns</td><td>0.0928 ns</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachInEnumerable</td><td>.NET 7.0</td><td>.NET 7.0</td><td>100</td><td>575.119 ns</td><td>2.4632 ns</td><td>2.3041 ns</td><td>0.0019</td><td>40 B</td>
+</tr><tr><td>ForeachInGenericIEnumerable</td><td>.NET 7.0</td><td>.NET 7.0</td><td>100</td><td>588.658 ns</td><td>4.9573 ns</td><td>4.6370 ns</td><td>0.0019</td><td>40 B</td>
+</tr><tr><td>ForeachInGenericIList</td><td>.NET 7.0</td><td>.NET 7.0</td><td>100</td><td>585.273 ns</td><td>0.9626 ns</td><td>0.7515 ns</td><td>0.0019</td><td>40 B</td>
+</tr><tr><td>ForeachInList</td><td>.NET Framework 4.8</td><td>.NET Framework 4.8</td><td>100</td><td>181.859 ns</td><td>0.2878 ns</td><td>0.2692 ns</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachInEnumerable</td><td>.NET Framework 4.8</td><td>.NET Framework 4.8</td><td>100</td><td>508.654 ns</td><td>0.8597 ns</td><td>0.7179 ns</td><td>0.0057</td><td>40 B</td>
+</tr><tr><td>ForeachInGenericIEnumerable</td><td>.NET Framework 4.8</td><td>.NET Framework 4.8</td><td>100</td><td>529.362 ns</td><td>0.4452 ns</td><td>0.4164 ns</td><td>0.0057</td><td>40 B</td>
+</tr><tr><td>ForeachInGenericIList</td><td>.NET Framework 4.8</td><td>.NET Framework 4.8</td><td>100</td><td>533.717 ns</td><td>3.2480 ns</td><td>3.0381 ns</td><td>0.0057</td><td>40 B</td>
+</tr><tr><td>ForeachInList</td><td>.NET 7.0</td><td>.NET 7.0</td><td>10000</td><td>2,845.717 ns</td><td>3.8087 ns</td><td>3.5627 ns</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachInEnumerable</td><td>.NET 7.0</td><td>.NET 7.0</td><td>10000</td><td>54,154.203 ns</td><td>32.4249 ns</td><td>30.3303 ns</td><td>-</td><td>40 B</td>
+</tr><tr><td>ForeachInGenericIEnumerable</td><td>.NET 7.0</td><td>.NET 7.0</td><td>10000</td><td>56,814.034 ns</td><td>66.8705 ns</td><td>62.5507 ns</td><td>-</td><td>40 B</td>
+</tr><tr><td>ForeachInGenericIList</td><td>.NET 7.0</td><td>.NET 7.0</td><td>10000</td><td>56,429.038 ns</td><td>317.7770 ns</td><td>297.2488 ns</td><td>-</td><td>40 B</td>
+</tr><tr><td>ForeachInList</td><td>.NET Framework 4.8</td><td>.NET Framework 4.8</td><td>10000</td><td>16,841.743 ns</td><td>24.3009 ns</td><td>22.7311 ns</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachInEnumerable</td><td>.NET Framework 4.8</td><td>.NET Framework 4.8</td><td>10000</td><td>49,477.353 ns</td><td>82.9215 ns</td><td>77.5649 ns</td><td>-</td><td>40 B</td>
+</tr><tr><td>ForeachInGenericIEnumerable</td><td>.NET Framework 4.8</td><td>.NET Framework 4.8</td><td>10000</td><td>50,923.471 ns</td><td>508.3068 ns</td><td>475.4705 ns</td><td>-</td><td>40 B</td>
+</tr><tr><td>ForeachInGenericIList</td><td>.NET Framework 4.8</td><td>.NET Framework 4.8</td><td>10000</td><td>50,474.825 ns</td><td>57.1024 ns</td><td>53.4136 ns</td><td>-</td><td>40 B</td>
+</tr></tbody></table>
+</body>
+</html>
